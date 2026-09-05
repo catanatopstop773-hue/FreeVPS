@@ -3,125 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI Chat</title>
+    <title>🤖 AI Chat</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, sans-serif; background: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 8px; }
-        .container { background: #161b22; padding: 16px; border-radius: 16px; width: 100%; max-width: 500px; height: 98vh; max-height: 800px; border: 1px solid #30363d; display: flex; flex-direction: column; }
-        h1 { color: #58a6ff; font-size: 20px; }
-        .sub { color: #8b949e; font-size: 11px; }
-        .chat { background: #0d1117; border-radius: 10px; padding: 12px; flex: 1; overflow-y: auto; border: 1px solid #30363d; margin: 6px 0 10px; }
-        .msg { padding: 10px 14px; border-radius: 14px; max-width: 85%; word-wrap: break-word; margin: 6px 0; font-size: 15px; animation: fadeIn 0.3s; }
-        .user { background: #1a6b8a; margin-left: auto; border-bottom-right-radius: 4px; }
-        .bot { background: #21262d; border-bottom-left-radius: 4px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-        .input-area { display: flex; gap: 8px; }
-        .input-area input { flex: 1; padding: 12px 16px; border-radius: 12px; border: 1px solid #30363d; background: #0d1117; color: #c9d1d9; font-size: 16px; outline: none; min-height: 48px; }
-        .input-area input:focus { border-color: #58a6ff; }
-        .input-area button { padding: 12px 18px; border: none; border-radius: 12px; background: #238636; color: #fff; font-size: 15px; font-weight: bold; min-height: 48px; cursor: pointer; }
-        .input-area button:disabled { opacity: 0.5; }
-        .status { font-size: 11px; color: #8b949e; display: flex; justify-content: space-between; padding-top: 6px; }
-        .online { color: #3fb950; }
-        .offline { color: #f85149; }
-        .loading { color: #d29922; }
-        .footer { font-size: 10px; color: #445; text-align: center; padding-top: 4px; }
-        .footer a { color: #4fc3f7; text-decoration: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
+            padding: 8px;
+        }
+        .container {
+            background: #161b22;
+            padding: 16px 14px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            height: 98vh;
+            max-height: 800px;
+            border: 1px solid #30363d;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 6px;
+            flex-shrink: 0;
+        }
+        h1 {
+            color: #58a6ff;
+            font-size: 20px;
+            margin: 0;
+        }
+        .sub {
+            color: #8b949e;
+            font-size: 11px;
+        }
+        .chat {
+            background: #0d1117;
+            border-radius: 10px;
+            padding: 12px;
+            flex: 1;
+            overflow-y: auto;
+            border: 1px solid #30363d;
+            margin: 6px 0 10px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        .chat::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        .msg {
+            margin: 6px 0;
+            padding: 10px 14px;
+            border-radius: 14px;
+            max-width: 85%;
+            word-wrap: break-word;
+            font-size: 15px;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease;
+        }
+        .user {
+            background: #1a6b8a;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+            color: #fff;
+        }
+        .bot {
+            background: #21262d;
+            border-bottom-left-radius: 4px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .input-area {
+            display: flex;
+            gap: 8px;
+            padding: 4px 0;
+            flex-shrink: 0;
+        }
+        .input-area input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            background: #0d1117;
+            color: #c9d1d9;
+            font-size: 16px;
+            outline: none;
+            min-height: 48px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .input-area input:focus {
+            border-color: #58a6ff;
+        }
+        .input-area input::placeholder {
+            color: #556;
+            font-size: 15px;
+        }
+        .input-area button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 12px;
+            background: #238636;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            min-height: 48px;
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            touch-action: manipulation;
+            -webkit-touch-callout: none;
+        }
+        .input-area button:active {
+            background: #1a6b2a;
+            transform: scale(0.96);
+        }
+        .input-area button:disabled {
+            opacity: 0.5;
+            transform: none;
+        }
+        .status {
+            font-size: 11px;
+            color: #8b949e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            padding-top: 6px;
+        }
+        .status .online {
+            color: #3fb950;
+        }
+        .status .offline {
+            color: #f85149;
+        }
+        .status .loading {
+            color: #d29922;
+        }
+        .footer {
+            font-size: 10px;
+            color: #445;
+            text-align: center;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+        .footer a {
+            color: #4fc3f7;
+            text-decoration: none;
+        }
         @media (max-width: 420px) {
-            .container { padding: 12px; }
-            h1 { font-size: 17px; }
-            .msg { font-size: 14px; padding: 8px 12px; }
-            .input-area input { font-size: 15px; padding: 10px 14px; min-height: 42px; }
-            .input-area button { font-size: 14px; min-height: 42px; padding: 10px 14px; }
+            .container {
+                padding: 12px 10px;
+            }
+            h1 {
+                font-size: 17px;
+            }
+            .msg {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            .input-area input {
+                font-size: 15px;
+                padding: 10px 14px;
+                min-height: 42px;
+            }
+            .input-area button {
+                font-size: 14px;
+                min-height: 42px;
+                min-width: 50px;
+                padding: 10px 14px;
+            }
+        }
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(14px, env(safe-area-inset-left));
+                padding-right: max(14px, env(safe-area-inset-right));
+                padding-top: max(12px, env(safe-area-inset-top));
+                padding-bottom: max(12px, env(safe-area-inset-bottom));
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-        <h1>🤖 AI Chat</h1>
-        <span class="sub">24/7</span>
-    </div>
-    <div class="chat" id="chat">
-        <div class="msg bot">Привет! Я Qwen 2.5. Напиши что-нибудь!</div>
-    </div>
-    <div class="input-area">
-        <input type="text" id="prompt" placeholder="Введите вопрос..." autocomplete="off">
-        <button id="sendBtn">➤</button>
-    </div>
-    <div class="status" id="status">
-        <span><span class="online">●</span> Онлайн</span>
-        <span>🧠 qwen2.5</span>
-    </div>
-    <div class="footer">🔗 <a href="#" onclick="location.reload()">🔄 Обновить</a></div>
-</div>
-<script>
-const API_URL = 'https://myapiai.serveousercontent.com/api/generate';
-const MODEL = 'qwen2.5:3b';
-const chat = document.getElementById('chat');
-const prompt = document.getElementById('prompt');
-const sendBtn = document.getElementById('sendBtn');
-const status = document.getElementById('status');
 
-function addMessage(text, isUser) {
-    const div = document.createElement('div');
-    div.className = `msg ${isUser ? 'user' : 'bot'}`;
-    div.textContent = text;
-    chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
-}
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Chat</h1>
+            <span class="sub">24/7</span>
+        </div>
 
-function setStatus(text, isOnline, isLoading) {
-    const icon = isLoading ? '⏳' : '●';
-    const cls = isLoading ? 'loading' : (isOnline ? 'online' : 'offline');
-    status.innerHTML = `<span><span class="${cls}">${icon}</span> ${text}</span><span>🧠 qwen2.5</span>`;
-}
+        <div class="chat" id="chat">
+            <div class="msg bot">Привет! Я Qwen 2.5. Напиши что-нибудь!</div>
+        </div>
 
-async function sendMessage() {
-    const text = prompt.value.trim();
-    if (!text) return;
-    addMessage(text, true);
-    prompt.value = '';
-    sendBtn.disabled = true;
-    setStatus('Думаю...', true, true);
-    try {
-        const resp = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ model: MODEL, prompt: text, stream: false })
+        <div class="input-area">
+            <input type="text" id="prompt" placeholder="Введите вопрос..." autocomplete="off" />
+            <button id="sendBtn">➤</button>
+        </div>
+
+        <div class="status" id="status">
+            <span><span class="online">●</span> Онлайн</span>
+            <span id="modelLabel">🧠 qwen2.5</span>
+        </div>
+
+        <div class="footer">
+            🔗 <a href="#" onclick="location.reload()">🔄 Обновить</a>
+        </div>
+    </div>
+
+    <script>
+        // ===== ПОСТОЯННЫЙ URL ЧЕРЕЗ SERVEO + WIREGUARD =====
+        const API_URL = 'https://myapiai.serveousercontent.com/api/generate';
+        const MODEL = 'qwen2.5:3b';
+
+        const chat = document.getElementById('chat');
+        const prompt = document.getElementById('prompt');
+        const sendBtn = document.getElementById('sendBtn');
+        const status = document.getElementById('status');
+
+        function addMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = `msg ${isUser ? 'user' : 'bot'}`;
+            div.textContent = text;
+            chat.appendChild(div);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function setStatus(text, isOnline, isLoading) {
+            let icon = isOnline ? '●' : '●';
+            let color = isOnline ? 'online' : 'offline';
+            if (isLoading) {
+                icon = '⏳';
+                color = 'loading';
+            }
+            status.innerHTML = `<span><span class="${color}">${icon}</span> ${text}</span><span>🧠 qwen2.5</span>`;
+        }
+
+        async function sendMessage() {
+            const text = prompt.value.trim();
+            if (!text) return;
+
+            addMessage(text, true);
+            prompt.value = '';
+            sendBtn.disabled = true;
+            setStatus('Думаю...', true, true);
+
+            try {
+                const resp = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: MODEL,
+                        prompt: text,
+                        stream: false
+                    })
+                });
+
+                if (!resp.ok) throw new Error(`Ошибка ${resp.status}`);
+                const data = await resp.json();
+                addMessage(data.response || '⚠️ Пустой ответ', false);
+                setStatus('Онлайн', true, false);
+
+            } catch (err) {
+                addMessage(`❌ Ошибка: ${err.message}`, false);
+                setStatus('Офлайн', false, false);
+            }
+
+            sendBtn.disabled = false;
+            prompt.focus();
+        }
+
+        prompt.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
         });
-        if (!resp.ok) throw new Error(`Ошибка ${resp.status}`);
-        const data = await resp.json();
-        addMessage(data.response || '⚠️ Пустой ответ', false);
-        setStatus('Онлайн', true, false);
-    } catch (err) {
-        addMessage(`❌ Ошибка: ${err.message}`, false);
-        setStatus('Офлайн', false, false);
-    }
-    sendBtn.disabled = false;
-    prompt.focus();
-}
 
-prompt.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') { e.preventDefault(); sendMessage(); }
-});
-sendBtn.addEventListener('click', sendMessage);
-prompt.focus();
+        sendBtn.addEventListener('click', sendMessage);
+        prompt.focus();
 
-// Проверка API
-async function checkAPI() {
-    try {
-        const resp = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ model: MODEL, prompt: 'ping', stream: false }),
-            signal: AbortSignal.timeout(5000)
-        });
-        setStatus(resp.ok ? 'Онлайн' : 'API не отвечает', resp.ok, false);
-    } catch {
-        setStatus('API недоступен', false, false);
-    }
-}
-checkAPI();
-</script>
+        // Скрываем клавиатуру при скролле
+        chat.addEventListener('touchstart', () => prompt.blur());
+
+        // Проверка API при загрузке
+        async function checkAPI() {
+            try {
+                const resp = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: MODEL,
+                        prompt: 'ping',
+                        stream: false
+                    }),
+                    signal: AbortSignal.timeout(5000)
+                });
+                setStatus(resp.ok ? 'Онлайн' : 'API не отвечает', resp.ok, false);
+            } catch {
+                setStatus('API недоступен', false, false);
+            }
+        }
+        checkAPI();
+    </script>
+
 </body>
 </html>
