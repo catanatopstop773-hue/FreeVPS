@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chat — Qwen 2.5</title>
+    <style>
+        body { font-family: Arial; background: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #161b22; padding: 30px; border-radius: 12px; width: 500px; max-width: 90%; border: 1px solid #30363d; }
+        h1 { color: #58a6ff; margin: 0 0 10px 0; }
+        .sub { color: #8b949e; font-size: 14px; margin-bottom: 20px; }
+        .chat { background: #0d1117; border-radius: 8px; padding: 15px; height: 300px; overflow-y: auto; border: 1px solid #30363d; margin-bottom: 15px; }
+        .msg { margin: 8px 0; padding: 8px 14px; border-radius: 8px; max-width: 80%; word-wrap: break-word; }
+        .user { background: #1a6b8a; margin-left: auto; }
+        .bot { background: #21262d; }
+        .input-area { display: flex; gap: 10px; }
+        .input-area input { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #c9d1d9; font-size: 14px; }
+        .input-area button { padding: 10px 20px; border: none; border-radius: 6px; background: #238636; color: #fff; cursor: pointer; font-weight: bold; }
+        .input-area button:hover { background: #2ea043; }
+        .input-area button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .status { font-size: 12px; color: #8b949e; margin-top: 10px; }
+        .status .online { color: #3fb950; }
+        .status .offline { color: #f85149; }
+        .loading { color: #d29922; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🤖 AI Chat</h1>
+    <div class="sub">Локальный ИИ · 24/7</div>
+
+    <div class="chat" id="chat">
+        <div class="msg bot">Привет! Я Qwen 2.5. Напиши что-нибудь!</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="prompt" placeholder="Введите вопрос..." />
+        <button id="sendBtn">➤ Отправить</button>
+    </div>
+
+    <div class="status" id="status">
+        <span class="online">● Онлайн</span>
+    </div>
+</div>
+
+<script>
+    // === ВАШ API АДРЕС ===
+    const API_URL = 'https://myapiai.serveousercontent.com/api/generate';
+    const MODEL = 'qwen2.5:3b';
+
+    const chat = document.getElementById('chat');
+    const prompt = document.getElementById('prompt');
+    const sendBtn = document.getElementById('sendBtn');
+    const status = document.getElementById('status');
+
+    function addMessage(text, isUser) {
+        const div = document.createElement('div');
+        div.className = `msg ${isUser ? 'user' : 'bot'}`;
+        div.textContent = text;
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    function setStatus(text, isOnline) {
+        status.innerHTML = `<span class="${isOnline ? 'online' : 'offline'}">● ${text}</span>`;
+    }
+
+    async function sendMessage() {
+        const text = prompt.value.trim();
+        if (!text) return;
+
+        addMessage(text, true);
+        prompt.value = '';
+        sendBtn.disabled = true;
+        setStatus('⏳ Думаю...', true);
+
+        try {
+            const resp = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ model: MODEL, prompt: text, stream: false })
+            });
+
+            if (!resp.ok) throw new Error('Ошибка сервера');
+
+            const data = await resp.json();
+            addMessage(data.response || '⚠️ Пустой ответ', false);
+            setStatus('✅ Онлайн', true);
+
+        } catch (err) {
+            addMessage(`❌ Ошибка: ${err.message}`, false);
+            setStatus('❌ Офлайн', false);
+        }
+
+        sendBtn.disabled = false;
+        prompt.focus();
+    }
+
+    prompt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+    prompt.focus();
+</script>
+
+</body>
+</html>
