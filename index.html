@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AI Chat — Qwen 2.5</title>
+    <title>AI Chat</title>
     <style>
         body { font-family: Arial; background: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         .container { background: #161b22; padding: 30px; border-radius: 12px; width: 500px; max-width: 90%; border: 1px solid #30363d; }
@@ -20,34 +20,26 @@
         .status { font-size: 12px; color: #8b949e; margin-top: 10px; }
         .status .online { color: #3fb950; }
         .status .offline { color: #f85149; }
-        .loading { color: #d29922; font-style: italic; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>🤖 AI Chat</h1>
     <div class="sub">Локальный ИИ · 24/7</div>
-
     <div class="chat" id="chat">
         <div class="msg bot">Привет! Я Qwen 2.5. Напиши что-нибудь!</div>
     </div>
-
     <div class="input-area">
         <input type="text" id="prompt" placeholder="Введите вопрос..." />
         <button id="sendBtn">➤ Отправить</button>
     </div>
-
     <div class="status" id="status">
         <span class="online">● Онлайн</span>
     </div>
 </div>
-
 <script>
-    // === ВАШ API АДРЕС ===
     const API_URL = 'https://myapiai.serveousercontent.com/api/generate';
     const MODEL = 'qwen2.5:3b';
-
     const chat = document.getElementById('chat');
     const prompt = document.getElementById('prompt');
     const sendBtn = document.getElementById('sendBtn');
@@ -68,41 +60,31 @@
     async function sendMessage() {
         const text = prompt.value.trim();
         if (!text) return;
-
         addMessage(text, true);
         prompt.value = '';
         sendBtn.disabled = true;
         setStatus('⏳ Думаю...', true);
-
         try {
             const resp = await fetch(API_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ model: MODEL, prompt: text, stream: false })
             });
-
             if (!resp.ok) throw new Error('Ошибка сервера');
-
             const data = await resp.json();
             addMessage(data.response || '⚠️ Пустой ответ', false);
             setStatus('✅ Онлайн', true);
-
         } catch (err) {
             addMessage(`❌ Ошибка: ${err.message}`, false);
             setStatus('❌ Офлайн', false);
         }
-
         sendBtn.disabled = false;
         prompt.focus();
     }
 
-    prompt.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') sendMessage();
-    });
-
+    prompt.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
     sendBtn.addEventListener('click', sendMessage);
     prompt.focus();
 </script>
-
 </body>
 </html>
