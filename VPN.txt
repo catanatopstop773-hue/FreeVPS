@@ -1,0 +1,53 @@
+# === СТАНДАРТНЫЕ СЕРВЕРЫ ===
+
+vless://87a7ec27-36a3-4bb0-98bd-f6ed33b5b1fb@dns.resetnet.ru:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=dns.resetnet.ru&fp=firefox&pbk=5dWsUqnx6er0h1NSEFou4CqfxeaSUonnjY9hJF9pqD0&spx=%2F&type=tcp&headerType=none#🇩🇪 Германия — Vision
+
+vless://854d555f-c336-41e7-a78e-a218c567e317@89.185.85.42:1443?encryption=none&security=reality&sni=developer.nvidia.com&fp=firefox&pbk=YDKXkZ3fl_V1OIKVNTJ8nUNMUb59UgyWN2Fj5tCi-V8&sid=a7f31c9e42b8d615&type=xhttp&mode=stream-up&path=%2Fapi%2Fdownload%2Fporno.mp4&extra=%7B%22mode%22%3A%22auto%22%2C%22path%22%3A%22%2Fapi%2Fdownload%2Fporno.mp4%22%7D#🇹🇷 Турция — XHTTP
+
+vless://854d555f-c336-41e7-a78e-a218c567e317@89.185.85.42:8443?encryption=none&security=reality&sni=developer.nvidia.com&fp=firefox&pbk=YDKXkZ3fl_V1OIKVNTJ8nUNMUb59UgyWN2Fj5tCi-V8&sid=a7f31c9e42b8d615&type=grpc&mode=gun&authority=&serviceName=grpc#🇩🇪 Германия — gRPC
+
+vless://3497fe81-2005-4416-a26f-5a651f86eac0@201.51.12.29:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=5post-gate.x5.ru&fp=firefox&pbk=Jg7t1GwxpS4fhsYzqgz37zlQRSd8YAHECtgdGFDrnDc&sid=3f4a5b6c&spx=%2F&type=tcp&headerType=none#🇷🇺 Россия — Vision
+
+vless://3497fe81-2005-4416-a26f-5a651f86eac0@62.132.117.11:43439?encryption=none&security=reality&sni=cdn.24cloudplay.ru&fp=firefox&pbk=b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4&sid=84d5e248cb91dca0&type=grpc&mode=gun&authority=&serviceName=streaming#🇵🇱 Польша — gRPC
+
+vless://3497fe81-2005-4416-a26f-5a651f86eac0@91.233.8.26:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=tnt-cloud.ru&fp=firefox&pbk=b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4&sid=4a7b1c8d&spx=%2F&type=tcp&headerType=none#🇩🇪 Германия — Vision
+
+vless://3497fe81-2005-4416-a26f-5a651f86eac0@62.132.117.17:43439?encryption=none&security=reality&sni=cdn.24cloudplay.ru&fp=firefox&pbk=b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4&sid=ae99c61853e8a6ae&type=grpc&mode=gun&authority=&serviceName=streaming#🇵🇱 Польша — gRPC
+
+vless://3536e1fa-0850-44d1-b123-925ce12476cf@206.71.158.124:443?encryption=none&security=tls&sni=dey.lnmarketplace.net&alpn=h2&fp=chrome&type=xhttp&mode=stream-one&host=dey.lnmarketplace.net&path=%2Fkavir#🇳🇱 Нидерланды — XHTTP
+
+vless://1c332eae-7e02-4acd-996d-4eb3e652401c@prep.wwwinternetvideo.click:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=yandex.ru&fp=firefox&pbk=uitO4Z8t9TplwwYaqwLqh5rfxDh_X8bOBiNuPbzvaEM&sid=bbe46bd8f6b96839&type=tcp&headerType=none#🇷🇺 Россия — Vision
+
+vless://83fd52e3-c8d4-4ba6-abf4-445b99fec0f0@italic.dearhossein-taktaz.ir:2083?encryption=none&security=tls&sni=italic.dearhossein-taktaz.ir&alpn=h2%2C%20http%2F1.1&fp=chrome&type=httpupgrade&host=italic.dearhossein-taktaz.ir&path=%2F#🇫🇮 Финляндия — HTTPUpgrade
+
+vless://8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3@eu-xh01.tcp-reset-club.net:443?encryption=none&security=reality&sni=s3.netavex.com&pbk=mLmBhbVFfNuo2eUgBh6r9-5Koz9mUCn3aSzlR6IejUg&sid=f79448a30d&type=xhttp&mode=packet-up&path=%2Fassets%2Fv2%2Fpkg#🇦🇹 Австрия — XHTTP
+
+vless://7e89c315-6436-4800-e287-c16d26d407a8@pro2.hx9.ir:2053?encryption=none&security=tls&sni=mind.esmahdi9.com&alpn=h3%2C%20h2%2C%20http%2F1.1&fp=chrome&type=xhttp&mode=auto&host=mind.esmahdi9.com&path=%2F%40v2_line#🇳🇱 Нидерланды — XHTTP
+
+vless://4cbefb4d-328c-411d-bf76-780df1082df8@31.76.89.110:8443?encryption=none&security=reality&sni=wikihow.com&fp=chrome&pbk=p9ISfhV0uZpKSgrK_8R6Mm4A01tWdzpKMlFR2TIj81s&type=xhttp&mode=auto&host=wikihow.com&path=%2F#🇫🇮 Финляндия — XHTTP
+
+vless://4fb82973-a7f1-4fc2-9958-cb21f5162f06@nl-xh02.tcp-reset-club.net:8443?encryption=none&security=reality&sni=s3.netavex.com&pbk=Gu_QdtOX6E8pZcYvDWgHKA5dxcit7hrpU27sizCEWXg&sid=e0&type=xhttp&mode=stream-one&path=%2Fassets%2Fv2%2Fpkg&extra=%7B%22xmux%22%3A%7B%22maxConcurrency%22%3A%2216-32%22%7D%7D#🇳🇱 Нидерланды — XHTTP
+
+vless://e8b1500b-e9e8-5492-8312-f4eadf7d0767@162.19.10.99:443?flow=xtls-rprx-vision&encryption=none&security=tls&sni=nasnet-162191099-direct.mbghalibaf.com&alpn=h2&fp=chrome&type=tcp&headerType=none#🇫🇷 Франция — Vision
+
+vless://878fb7f7-fc65-465e-a352-17c7216c6f3d@185.47.254.251:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=gateway.icloud.com&fp=chrome&pbk=6-_ZidygR8PRt4gtHlGCAW-PPmjEIm7Wn7MZqJU1z1Q&sid=6c059ecfddf9b179&type=tcp&headerType=none#🇬🇹 Гватемала — Vision
+
+vless://cd3bb7d9-7df3-4644-ac05-c260990ac277@pl4.moritech.net:443?flow=xtls-rprx-vision&encryption=none&security=tls&sni=pl4.moritech.net&alpn=h2&fp=firefox&type=tcp&headerType=none#🇵🇱 Польша — Vision
+
+vless://1577b744-8004-4eef-862c-8cae0cd27ab9@185.255.112.206:443?encryption=none&security=reality&sni=play.google.com&fp=chrome&pbk=ZBv1jOEHziWtQQoThg63_1gm4zIPyk_cfVmNJ1SOZSk&sid=a88550765b9956ee&spx=%2F&type=xhttp&mode=auto&path=%2F#🇫🇷 Франция — XHTTP
+
+vless://81d8f575-a9c3-03e7-be6b-c0e1dc1d2e20@91.233.8.141:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=tnt-cloud.ru&fp=chrome&pbk=k76Ze8R0E5NyZwvBZT1A4n0zlVXxTeHQDAs0bBqiGQw&sid=6e5f2a3b&type=tcp&headerType=none#🇩🇪 Германия — Vision
+
+vless://fd533424-4754-4c7f-af1d-40eaeaaa2dbb@82.145.55.75:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=strapi.io&fp=firefox&pbk=SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY&sid=fd55b698ee8c3629&type=tcp&headerType=none#🇯🇪 Джерси — Vision
+
+vless://758f49d3-5f5f-47e7-bfa4-4ce96faf800d@2.26.224.233:8443?encryption=none&security=reality&sni=cdn.shopify.com&pbk=NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU&sid=f747a7a5793b5714&type=grpc&mode=gun&authority=Telegram-Leviko_v2ray&serviceName=#🇵🇱 Польша — gRPC
+
+vless://aeeff70d-5bf4-48dc-9120-0593eda94cdb@51.161.199.124:443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=suetinklerartglass.co.uk&fp=chrome&pbk=qM0uZ1Gp_Ve59S_iKPyFqQXjfjkUqf6iSHH_fxFt7w0&sid=0f4d3210977f51a5&type=tcp&headerType=none#🇦🇺 Австралия — Vision
+
+vless://c80a96e8-d4a6-4785-b53b-a475b252c4ed@5.129.210.63:8443?encryption=none&security=reality&sni=sun6-21.userapi.com&fp=edge&pbk=Z5WItgtmxxL_umUUIPO72kSTBGjlGg3sUPigtTG6wlI&sid=ac&spx=%2F&type=grpc&mode=gun&authority=&serviceName=#🇳🇱 Нидерланды — gRPC
+
+vless://48e84fcc-ecb1-48a3-a596-88fea84887f5@129.154.192.50:2053?flow=xtls-rprx-vision&encryption=none&security=reality&sni=www.ibm.com&fp=firefox&pbk=oBYxqt4GNTWrmvHRHM_6SAVj_yy95lXtQ0NLd1QWQDU&sid=dea6d68a3f6f96e3&type=tcp&headerType=none#🇰🇷 Южная Корея — Vision
+
+vless://010bf7ad-b6ec-482b-8392-ae038f466a0a@207.241.172.98:4777?flow=xtls-rprx-vision&encryption=none&security=reality&sni=amp-api-edge.apps.apple.com&fp=firefox&pbk=8ZL2JgDP9gHkgGTbGF-uK8omfWkFplZnCH0N2_U18Uo&sid=01115788253bc845&type=tcp&headerType=none#🇩🇪 Германия — Vision
+
+ss://chacha20-ietf-poly1305:k1dBOmOB4oqi7Ump37a1bQ@82.38.31.219:8080#🇳🇱 Нидерланды — SS
